@@ -11,17 +11,17 @@ public class Main {
         ArrayList<Account> accounts = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(input))) {
             while ((s = br.readLine()) != null) {
-                System.out.println(line++);
                 try {
                     accounts.add(new Account(s));
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.err.printf("Error processing line %d:%s", line++, System.lineSeparator());
+                    System.err.println(e);
                 }
             }
             // use
         } catch (IOException e) {
-            System.out.println("Error reading: " + args[0]);
-            System.out.println(e);
+            System.err.println("Error reading: " + args[0]);
+            System.err.println(e);
         }
     }
 }
